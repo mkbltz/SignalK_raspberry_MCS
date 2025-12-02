@@ -81,6 +81,9 @@ function sudoInstall() {
     )
   }
   //add CAN0 device
+  if (fs.existsSync("/etc/network/interfaces.d") == false)) {
+    execconfig(`mkdir -p /etc/network/interfaces.d`)  
+  }
   var can0 = fs.readdirSync("/etc/network/interfaces.d/")
   if (can0.includes("can0") == false) {
     execconfig(
